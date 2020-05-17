@@ -13,7 +13,7 @@
       <!--将信息传递给子组件-->
       <Add :addComment="addComment"/>
       <!--组件之间的通信，最原始的方式是通过标签-->
-      <List :comments="comments"/>
+      <List :comments="comments" :deleteComment="deleteComment"/>
     </div>
   </div>
 </template>
@@ -47,7 +47,10 @@
       addComment(comment) {
         //将每一个评论添加到数组的最前面（unshift，就是代表最前面）
         this.comments.unshift(comment)
-
+      },
+      //删除指定评论
+      deleteComment(index) {
+        this.comments.splice(index, 1)
       }
     },
     components: {
